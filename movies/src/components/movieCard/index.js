@@ -26,7 +26,7 @@ export default function MovieCard(props) {
             // ? `https://image.tmdb.org/t/p/original/wigZBAmNrIhxp2FNGOROUAeHvdh.jpg` 
             ? `https://image.tmdb.org/t/p/original/${movie.poster_path}`
             : img
-            //: `./movies/src/images/images/film-poster-placeholder.png`
+            
         }
       />
       <CardContent>
