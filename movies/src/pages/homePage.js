@@ -24,6 +24,19 @@ const MovieListPage = (props) => {
     else setGenreFilter(value);
   };
 
+  const addToFavorites = (movieId) => {
+    const updatedMovies = movies.map((m) =>
+      m.id === movieId ? { ...m, favorite: true } : m
+    );
+    setMovies(updatedMovies);
+  };
+  const removeFromFavorites = (movieId) => {
+    const updatedMovies = movies.map((m) =>
+      m.id === movieId ? { ...m, favorite: false } : m
+    );
+    setMovies(updatedMovies);
+  };
+
   useEffect(() => {
     fetch(
       `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&include_adult=false&page=2`
@@ -51,7 +64,11 @@ const MovieListPage = (props) => {
             genreFilter={genreFilter}
           />
         </Grid>
-        <MovieList movies={displayedMovies}></MovieList>
+        <MovieList movies={displayedMovies} selectFavorite={addToFavorites} />
+        <MovieList
+          movies={displayedMovies}
+          selectFavorite={removeFromFavorites}
+        />
       </Grid>
     </Grid>
   );
