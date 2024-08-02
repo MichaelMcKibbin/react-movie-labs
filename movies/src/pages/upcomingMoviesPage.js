@@ -19,7 +19,7 @@ const UpcomingMoviesPage = () => {
 
   return (
     <PageTemplate
-      title="Comming soon, to a theater near you..."
+      title="Coming soon, to a theater near you..."
       movies={movies}
     />
   );
