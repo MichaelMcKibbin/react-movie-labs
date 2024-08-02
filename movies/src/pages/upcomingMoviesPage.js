@@ -21,6 +21,9 @@ const UpcomingMoviesPage = () => {
     <PageTemplate
       title="Coming soon, to a theater near you..."
       movies={movies}
+      action={() => {
+        return null;
+      }}
     />
   );
 };
