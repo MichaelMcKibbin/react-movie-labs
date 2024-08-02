@@ -33,13 +33,6 @@ const FavoriteMoviesPage = () => {
 
   const toDo = () => true;
 
-  // return (
-  //   <PageTemplate
-  //     title="Favourite Movies"
-  //     movies={movies}
-  //     selectFavorite={toDo}
-  //   />
-  // );
   return (
     <PageTemplate
       title="Favorite Movies"

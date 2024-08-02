@@ -8,7 +8,7 @@ const MovieReviewPage = (props) => {
   const { movie, review } = location.state;
 
   return (
-    <PageTemplate movie={movie}>
+    <PageTemplate movie={movie} title="Reviews">
       <MovieReview review={review} />
     </PageTemplate>
   );
