@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PageTemplate from "../components/templateMovieListPage";
+import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 
 const UpcomingMoviesPage = () => {
   const [movies, setMovies] = useState([]);
@@ -21,8 +22,8 @@ const UpcomingMoviesPage = () => {
     <PageTemplate
       title="Coming soon, to a theater near you..."
       movies={movies}
-      action={() => {
-        return null;
+      action={(movie) => {
+        return <PlaylistAddIcon movie={movie} />;
       }}
     />
   );
