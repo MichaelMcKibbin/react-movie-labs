@@ -10,6 +10,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
+import PlaylistCheckIcon from "@mui/icons-material/PlaylistAddCheck";
 import CalendarIcon from "@mui/icons-material/CalendarTodayTwoTone";
 import StarRateIcon from "@mui/icons-material/StarRate";
 import IconButton from "@mui/material/IconButton";
@@ -33,14 +34,35 @@ export default function MovieCard({ movie, action }) {
     e.preventDefault();
     addToFavorites(movie);
   };
+  //
+  const { playlist, addToPlaylist } = useContext(MoviesContext);
+  if (playlist.find((id) => id === movie.id)) {
+    movie.playlist = true;
+  } else {
+    movie.playlist = false;
+  }
+
+  const handleAddToPlaylist = (e) => {
+    e.preventDefault();
+    addToPlaylist(movie);
+  };
 
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
+        // TODO show both icons if movie on both lists.
+        // currently, favorite takes precedence.
+        // use case or if else??
+        // maybe easier to use a different third icon for both?
+
         avatar={
           movie.favorite ? (
             <Avatar sx={{ backgroundColor: "red" }}>
               <FavoriteIcon />
+            </Avatar>
+          ) : movie.playlist ? (
+            <Avatar sx={{ backgroundColor: "green" }}>
+              <PlaylistCheckIcon />
             </Avatar>
           ) : null
         }
@@ -88,18 +110,3 @@ export default function MovieCard({ movie, action }) {
     </Card>
   );
 }
-// CardActions caused problems. Look at it again later.
-
-// ????
-//  const { playlist, addToPlaylist } = useContext(MoviesContext);
-
-//  if (playlist.find((id) => id === movie.id)) {
-//    movie.playlist = true;
-//  } else {
-//    movie.playlist = false;
-//  }
-
-//  const handleAddToPlaylist = (e) => {
-//    e.preventDefault();
-//    addToPlaylist(movie);
-//  };
